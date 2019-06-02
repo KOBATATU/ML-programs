@@ -1,6 +1,6 @@
 
 import numpy as np
-from utils.functions import Sigmoid
+from utils.funcsions.functions import Sigmoid
 
 class LogisticRegression(object):
     def __init__(self, random_seed=None, lr=0.01, iterations=100):
