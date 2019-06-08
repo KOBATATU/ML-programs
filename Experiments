@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import glob
+from PIL import Image
+
+#実験をしているプログラムなのでコードは汚いです。
+
+#平均した画像を出力する
+def mean_image(file,size):
+    image = np.zeros((1, size * size))
+    for readfile in glob.glob(file):
+        A = Image.open(readfile)
+        images = np.array(A.convert("RGB").resize((size, size)))
+        image += images.reshape(1, -1)
+
+    image = image / len(glob.glob(file)) #平均
+    plt.imshow(image.reshape(size,size,3))
+    plt.show()
+
+#画像の分散を出力
+def var_image(file,size)
+    image = np.array([])
+    for file_list in glob.glob(size):
+        A = Image.open(file_list)
+        image = np.append(image,np.array(A.convert("RGB").resize((size,size))))
+
+    image = image.reshape(len(glob.glob(file)),-1)
+    image = np.var(image,axis = 0) #diagonal covariance 対角成分の分散
+    image = image.reshape(size,size,3)
+    # plt.imshow(image)　#正規化する。
