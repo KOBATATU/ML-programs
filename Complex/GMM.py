@@ -64,8 +64,8 @@ class GaussianMixtureModel(object):
         sum_likelihoods = np.expand_dims(
             np.sum(weighted_likelihoods, axis=1), axis=1)
 
+        #Pr(X|theta) = Norm[]Cat[]/sum(Norm[]Cat[])となる。
         self.responsibility = weighted_likelihoods / sum_likelihoods
-        # Assign samples to cluster that has largest probability
 
     # M-step
     def maximization(self, X):
